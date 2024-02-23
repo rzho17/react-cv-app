@@ -6,7 +6,6 @@ export default function Experience({
   cvLocation,
   cvCompany,
   cvJob,
-  cvJobExp,
   cvJobInfo,
 }) {
   return (
@@ -20,7 +19,7 @@ export default function Experience({
         <div className="cv--info">
           <p className="cv--company">{cvCompany}</p>
           <p className="cv--job-info">{cvJob}</p>
-          {cvJobExp && <p>{cvJobInfo}</p>}
+          {cvJobInfo && <p>{cvJobInfo}</p>}
         </div>
       </div>
     </>

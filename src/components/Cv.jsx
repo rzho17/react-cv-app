@@ -25,8 +25,7 @@ export default function Cv() {
         cvLocation="Vancouver, British Columbia"
         cvCompany="University of British Columbia"
         cvJob="Bachelors in Economics"
-        cvJobExp={false}
-        cvJobInfo="Education"
+        cvJobInfo=""
       />
       <Experience
         cvTitle="Professional Experience"
@@ -34,7 +33,6 @@ export default function Cv() {
         cvLocation="New York City, US"
         cvCompany="Super Real Company"
         cvJob="Web Designer"
-        cvJobExp={true}
         cvJobInfo="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam
         nostrum possimus quisquam impedit eaque? Incidunt ipsum dolore nobis
         consequuntur exercitationem totam ratione repellendus alias et
