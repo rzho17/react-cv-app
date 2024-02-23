@@ -1,0 +1,15 @@
+.cv--description--title {
+  margin: 2rem 0 0;
+}
+
+.cv--education--container {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 2rem;
+
+  text-align: left;
+}
+
+.cv--education--container p {
+  margin-bottom: -1rem;
+}
