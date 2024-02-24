@@ -3,7 +3,7 @@ import "../styles/App.css";
 import Header from "./Header";
 import Experience from "./Experience";
 
-export default function Cv() {
+export default function Cv({ personalFormData }) {
   return (
     <div className="cv--main">
       <div className="cv--header--line"></div>
@@ -17,7 +17,7 @@ export default function Cv() {
         <p>no_reply@example.com</p>
       </div> */}
 
-      <Header />
+      <Header personalFormData={personalFormData} />
 
       <Experience
         cvTitle="Education"

@@ -1,63 +1,27 @@
 import { useState } from "react";
+import HeaderForm from "./HeaderForm";
 
-export default function Form() {
-  const [personalFormData, setPersonalFormData] = useState({
-    fullName: "",
-    streetName: "",
-    cityName: "",
-    phone: "",
-    email: "",
-  });
+export default function Form({ formData, handleChange }) {
+  //   const [personalFormData, setPersonalFormData] = useState({
+  //     fullName: "",
+  //     streetName: "",
+  //     cityName: "",
+  //     phone: "",
+  //     email: "",
+  //   });
+
+  //   function handleChange(evt) {
+  //     setPersonalFormData((prevData) => {
+  //       return {
+  //         ...prevData,
+  //         [evt.target.name]: evt.target.value,
+  //       };
+  //     });
+  //   }
 
   return (
     <div className="form--container">
-      <form action="" className="form--personal">
-        <div className="form--name">
-          <label htmlFor="fullName">Your Full Name</label>
-          <input
-            id="fullName"
-            type="text"
-            name="fullName"
-            value={personalFormData.fullName}
-          />
-        </div>
-        <div className="form--address--street">
-          <label htmlFor="streetName">Street Addres</label>
-          <input
-            id="streetName"
-            type="text"
-            name="streetName"
-            value={personalFormData.streetName}
-          />
-        </div>
-        <div className="form--address--city">
-          <label htmlFor="cityName">City</label>
-          <input
-            id="cityName"
-            type="text"
-            name="cityName"
-            value={personalFormData.cityName}
-          />
-        </div>
-        <div className="form--phone">
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            id="phone"
-            type="text"
-            name="phone"
-            value={personalFormData.phone}
-          />
-        </div>
-        <div className="form--email">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="text"
-            name="email"
-            value={personalFormData.email}
-          />
-        </div>
-      </form>
+      <HeaderForm formData={formData} handleChange={handleChange} />
     </div>
   );
 }

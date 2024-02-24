@@ -29,10 +29,27 @@ import Cv from "./components/Cv";
 import Form from "./components/Form";
 
 function App() {
+  const [personalFormData, setPersonalFormData] = useState({
+    fullName: "",
+    streetName: "",
+    cityName: "",
+    phone: "",
+    email: "",
+  });
+
+  function handleChange(evt) {
+    setPersonalFormData((prevData) => {
+      return {
+        ...prevData,
+        [evt.target.name]: evt.target.value,
+      };
+    });
+  }
+
   return (
     <main>
-      <Form />
-      <Cv />
+      <Form formData={personalFormData} handleChange={handleChange} />
+      <Cv personalFormData={personalFormData} />
     </main>
   );
 }
