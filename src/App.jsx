@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./styles/App.css";
 
 //Things to do for this project:
@@ -37,6 +35,24 @@ function App() {
     email: "",
   });
 
+  const [educationData, setEducationData] = useState({
+    // type: "",
+    date: "",
+    location: "",
+    place: "",
+    title: "",
+    info: "",
+  });
+
+  const [experienceData, setExperienceData] = useState({
+    type: "",
+    date: "",
+    location: "",
+    place: "",
+    title: "",
+    info: "",
+  });
+
   function handleChange(evt) {
     setPersonalFormData((prevData) => {
       return {
@@ -46,10 +62,28 @@ function App() {
     });
   }
 
+  function handleEducation(evt) {
+    setEducationData((prevData) => {
+      return {
+        ...prevData,
+        [evt.target.name]: evt.target.value,
+      };
+    });
+  }
+
   return (
     <main>
-      <Form formData={personalFormData} handleChange={handleChange} />
-      <Cv personalFormData={personalFormData} />
+      <Form
+        formData={personalFormData}
+        handleChange={handleChange}
+        educationData={educationData}
+        handleEducation={handleEducation}
+      />
+      <Cv
+        personalFormData={personalFormData}
+        educationData={educationData}
+        experienceData={experienceData}
+      />
     </main>
   );
 }

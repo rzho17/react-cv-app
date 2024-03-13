@@ -1,5 +1,4 @@
 export default function HeaderForm({ formData, handleChange }) {
-  console.log(formData);
   return (
     <form action="" className="form--personal">
       <div className="form--name">
@@ -13,7 +12,7 @@ export default function HeaderForm({ formData, handleChange }) {
         />
       </div>
       <div className="form--address--street">
-        <label htmlFor="streetName">Street Addres</label>
+        <label htmlFor="streetName">Street Address</label>
         <input
           id="streetName"
           type="text"

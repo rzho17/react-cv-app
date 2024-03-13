@@ -3,7 +3,11 @@ import "../styles/App.css";
 import Header from "./Header";
 import Experience from "./Experience";
 
-export default function Cv({ personalFormData }) {
+export default function Cv({
+  personalFormData,
+  educationData,
+  experienceData,
+}) {
   return (
     <div className="cv--main">
       <div className="cv--header--line"></div>
@@ -19,15 +23,23 @@ export default function Cv({ personalFormData }) {
 
       <Header personalFormData={personalFormData} />
 
+      <Experience cvTitle={"Education"} educationData={educationData} />
+
       <Experience
+        cvTitle={"Professional Experience"}
+        educationData={experienceData}
+      />
+
+      {/* <Experience
         cvTitle="Education"
         cvDate="08/2020 – present"
         cvLocation="Vancouver, British Columbia"
         cvCompany="University of British Columbia"
         cvJob="Bachelors in Economics"
         cvJobInfo=""
-      />
-      <Experience
+      /> */}
+
+      {/* <Experience
         cvTitle="Professional Experience"
         cvDate="08/2020 – present"
         cvLocation="New York City, US"
@@ -37,7 +49,7 @@ export default function Cv({ personalFormData }) {
         nostrum possimus quisquam impedit eaque? Incidunt ipsum dolore nobis
         consequuntur exercitationem totam ratione repellendus alias et
         quidem, blanditiis delectus impedit explicabo!"
-      />
+      /> */}
       {/* <h3 className="cv--description--title">Education</h3>
       <div className="cv--education--container">
         <div className="cv--date">

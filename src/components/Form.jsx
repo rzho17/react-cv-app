@@ -1,7 +1,13 @@
 import { useState } from "react";
 import HeaderForm from "./HeaderForm";
+import EducationForm from "./EducationForm";
 
-export default function Form({ formData, handleChange }) {
+export default function Form({
+  formData,
+  handleChange,
+  educationData,
+  handleEducation,
+}) {
   //   const [personalFormData, setPersonalFormData] = useState({
   //     fullName: "",
   //     streetName: "",
@@ -22,6 +28,10 @@ export default function Form({ formData, handleChange }) {
   return (
     <div className="form--container">
       <HeaderForm formData={formData} handleChange={handleChange} />
+      <EducationForm
+        educationData={educationData}
+        handleEducation={handleEducation}
+      />
     </div>
   );
 }

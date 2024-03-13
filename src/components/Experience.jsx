@@ -1,25 +1,18 @@
 import "../styles/Experience.css";
 
-export default function Experience({
-  cvTitle,
-  cvDate,
-  cvLocation,
-  cvCompany,
-  cvJob,
-  cvJobInfo,
-}) {
+export default function Experience({ cvTitle, educationData }) {
   return (
     <>
-      <h3 className="cv--description--title">{cvTitle}</h3>
+      {cvTitle && <h3 className="cv--description--title">{cvTitle}</h3>}
       <div className="cv--education--container">
         <div className="cv--date">
-          <p className="cv--year">{cvDate}</p>
-          <p className="cv--location">{cvLocation}</p>
+          <p className="cv--year">{educationData.date}</p>
+          <p className="cv--location">{educationData.location}</p>
         </div>
         <div className="cv--info">
-          <p className="cv--company">{cvCompany}</p>
-          <p className="cv--job-info">{cvJob}</p>
-          {cvJobInfo && <p>{cvJobInfo}</p>}
+          <p className="cv--company">{educationData.place}</p>
+          <p className="cv--job-info">{educationData.title}</p>
+          {educationData.info && <p>{educationData.info}</p>}
         </div>
       </div>
     </>
