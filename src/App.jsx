@@ -35,14 +35,20 @@ function App() {
     email: "",
   });
 
-  const [educationData, setEducationData] = useState({
-    // type: "",
-    date: "",
-    location: "",
-    place: "",
-    title: "",
-    info: "",
-  });
+  //data will be an array of objects
+  //when the user clicks add an education
+  //it will add an empty object to the array
+  // the user can then input the info into that object in the array
+  const [educationData, setEducationData] = useState([
+    {
+      // type: "",
+      date: "",
+      location: "",
+      place: "",
+      title: "",
+      info: "",
+    },
+  ]);
 
   const [experienceData, setExperienceData] = useState({
     type: "",
@@ -64,10 +70,45 @@ function App() {
 
   function handleEducation(evt) {
     setEducationData((prevData) => {
-      return {
-        ...prevData,
+      const lastIndex = prevData.length - 1;
+
+      const newData = [...prevData];
+
+      newData[lastIndex] = {
+        ...newData[lastIndex],
         [evt.target.name]: evt.target.value,
       };
+      return newData;
+    });
+  }
+
+  // function handleEducation(evt) {
+  //   setEducationData((prevData) => {
+  //     const lastIndex = prevData.length - 1;
+  //     // const newData = [...prevData];
+
+  //     // newData[lastIndex] =
+  //     const newData = [...prevData];
+  //     // Update the last object in the array with the new value
+  //     newData[lastIndex] = {
+  //       ...newData[lastIndex],
+  //       [evt.target.name]: evt.target.value,
+  //     };
+  //     // Return the updated array
+  //     return newData;
+  //   });
+  // }
+
+  function addEducation() {
+    const test = {
+      date: "",
+      location: "",
+      place: "",
+      title: "",
+      info: "",
+    };
+    setEducationData((prevData) => {
+      return [...prevData, test];
     });
   }
 
@@ -78,6 +119,7 @@ function App() {
         handleChange={handleChange}
         educationData={educationData}
         handleEducation={handleEducation}
+        addEducation={addEducation}
       />
       <Cv
         personalFormData={personalFormData}

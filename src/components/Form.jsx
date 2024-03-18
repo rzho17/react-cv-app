@@ -1,37 +1,31 @@
 import { useState } from "react";
 import HeaderForm from "./HeaderForm";
 import EducationForm from "./EducationForm";
+import Button from "./Button";
+import EducationContainer from "./EducationContainer";
 
 export default function Form({
   formData,
   handleChange,
   educationData,
   handleEducation,
+  addEducation,
 }) {
-  //   const [personalFormData, setPersonalFormData] = useState({
-  //     fullName: "",
-  //     streetName: "",
-  //     cityName: "",
-  //     phone: "",
-  //     email: "",
-  //   });
-
-  //   function handleChange(evt) {
-  //     setPersonalFormData((prevData) => {
-  //       return {
-  //         ...prevData,
-  //         [evt.target.name]: evt.target.value,
-  //       };
-  //     });
-  //   }
-
   return (
     <div className="form--container">
       <HeaderForm formData={formData} handleChange={handleChange} />
-      <EducationForm
+      {/* <EducationForm
         educationData={educationData}
         handleEducation={handleEducation}
+      /> */}
+
+      <EducationContainer
+        educationData={educationData}
+        handleEducation={handleEducation}
+        addEducation={addEducation}
       />
+
+      {/* <Button text={"asdfasd"} /> */}
     </div>
   );
 }

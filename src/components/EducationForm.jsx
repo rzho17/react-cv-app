@@ -4,6 +4,8 @@ export default function EducationForm({ educationData, handleEducation }) {
   // place: "",
   // title: "",
   // info: "",
+
+  console.log(educationData);
   return (
     <form action="" className="form--experience">
       <div className="form--start--date">
