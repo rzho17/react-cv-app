@@ -2,6 +2,7 @@ import "../styles/Cv.css";
 import "../styles/App.css";
 import Header from "./Header";
 import Experience from "./Experience";
+import { nanoid } from "nanoid";
 
 export default function Cv({
   personalFormData,
@@ -23,12 +24,18 @@ export default function Cv({
 
       <Header personalFormData={personalFormData} />
 
-      <Experience cvTitle={"Education"} educationData={educationData} />
+      {educationData.map((data) => {
+        return (
+          <Experience key={nanoid()} cvTitle={data.type} educationData={data} />
+        );
+      })}
 
-      <Experience
+      {/* <Experience cvTitle={"Education"} educationData={educationData} /> */}
+
+      {/* <Experience
         cvTitle={"Professional Experience"}
         educationData={experienceData}
-      />
+      /> */}
 
       {/* <Experience
         cvTitle="Education"

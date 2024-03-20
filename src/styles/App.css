@@ -10,3 +10,8 @@
 main {
   display: flex;
 }
+
+.educationContainer {
+  display: flex;
+  flex-direction: column;
+}

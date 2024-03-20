@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/App.css";
 
 //Things to do for this project:
@@ -25,6 +25,8 @@ import "./styles/App.css";
 
 import Cv from "./components/Cv";
 import Form from "./components/Form";
+import { nanoid } from "nanoid";
+import EducationForm from "./components/EducationForm";
 
 function App() {
   const [personalFormData, setPersonalFormData] = useState({
@@ -39,17 +41,40 @@ function App() {
   //when the user clicks add an education
   //it will add an empty object to the array
   // the user can then input the info into that object in the array
-  const [educationData, setEducationData] = useState([
-    {
-      // type: "",
-      date: "",
-      location: "",
-      place: "",
-      title: "",
-      info: "",
-    },
-  ]);
 
+  // const [educationData, setEducationData] = useState([
+  //   // trying to see if i can change the data type so i only have education set when it's the first entry
+  //   {
+  //     type: educationData.length > 0 ? "" : "Education",
+  //     date: "",
+  //     location: "",
+  //     place: "",
+  //     title: "",
+  //     info: "",
+  //   },
+  // ]);
+
+  const [educationData, setEducationData] = useState([]);
+
+  useEffect(() => {
+    setEducationData((prevData) => {
+      if (prevData.length === 0) {
+        return [
+          {
+            type: "Education",
+            date: "",
+            location: "",
+            place: "",
+            title: "",
+            id: nanoid(),
+            info: "",
+          },
+        ];
+      }
+      return prevData;
+    });
+  }),
+    [];
   const [experienceData, setExperienceData] = useState({
     type: "",
     date: "",
@@ -74,6 +99,7 @@ function App() {
 
       const newData = [...prevData];
 
+      //selects the last object in array and updates it
       newData[lastIndex] = {
         ...newData[lastIndex],
         [evt.target.name]: evt.target.value,
@@ -82,34 +108,54 @@ function App() {
     });
   }
 
-  // function handleEducation(evt) {
-  //   setEducationData((prevData) => {
-  //     const lastIndex = prevData.length - 1;
-  //     // const newData = [...prevData];
-
-  //     // newData[lastIndex] =
-  //     const newData = [...prevData];
-  //     // Update the last object in the array with the new value
-  //     newData[lastIndex] = {
-  //       ...newData[lastIndex],
-  //       [evt.target.name]: evt.target.value,
-  //     };
-  //     // Return the updated array
-  //     return newData;
-  //   });
-  // }
-
   function addEducation() {
     const test = {
       date: "",
       location: "",
       place: "",
       title: "",
+      id: nanoid(),
       info: "",
     };
     setEducationData((prevData) => {
       return [...prevData, test];
     });
+  }
+
+  //opens the selected education
+  //opens up a form
+  //form entered will change the selected education
+
+  function updateEducation(id) {
+    console.log(id);
+
+    //my thought is i need the state to change so i re render the education form
+    const filtered = educationData.filter((data) => data.id === id);
+    console.log(educationData.filter((data) => data.id === id));
+    //return doesn't do anything just trying to figure out how to make it appear
+
+    console.log("clicked!");
+
+    return filtered;
+
+    // changeDisplay();
+
+    // return (
+    //   <div>
+    //     {/* {display && (
+    //       <EducationForm
+    //         educationData={filtered[0]}
+    //         handleEducation={handleEducation}
+    //         // addEducation={addEducation}
+    //       />
+    //     )} */}
+    //     {/* <EducationForm
+    //       educationData={filtered[0]}
+    //       handleEducation={handleEducation}
+    //       // addEducation={addEducation}
+    //     /> */}
+    //   </div>
+    // );
   }
 
   return (
@@ -120,6 +166,7 @@ function App() {
         educationData={educationData}
         handleEducation={handleEducation}
         addEducation={addEducation}
+        updateEducation={updateEducation}
       />
       <Cv
         personalFormData={personalFormData}

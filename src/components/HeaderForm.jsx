@@ -1,5 +1,6 @@
 export default function HeaderForm({ formData, handleChange }) {
   return (
+    //takes form info for the header section
     <form action="" className="form--personal">
       <div className="form--name">
         <label htmlFor="fullName">Your Full Name</label>

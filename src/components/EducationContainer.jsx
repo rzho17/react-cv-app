@@ -1,22 +1,15 @@
 import { useState } from "react";
 import Button from "./Button";
 import EducationForm from "./EducationForm";
+import DisplayExperience from "./DisplayExperience";
 
 export default function EducationContainer({
   educationData,
   handleEducation,
   addEducation,
+  updateEducation,
 }) {
   const [display, setDisplay] = useState(false);
-
-  //   const test = {
-  //     // type: "",
-  //     date: "123",
-  //     location: "bye",
-  //     place: "university of brown",
-  //     title: "asdflksajd",
-  //     info: "",
-  //   };
 
   //changes display to hide or show education form
   function changeDisplay() {
@@ -29,7 +22,11 @@ export default function EducationContainer({
 
   return (
     <div className="educationContainer">
-      {/* <DisplayExperience data={educationData} /> */}
+      <h2>Education</h2>
+      <DisplayExperience
+        data={educationData}
+        updateEducation={updateEducation}
+      />
       {/* displays form if button is clicked */}
       {display && (
         <EducationForm
@@ -43,7 +40,7 @@ export default function EducationContainer({
 
       {!display && <Button func={addEducation} text={"Add Education"} />}
 
-      {display ? <Button func={changeDisplay} text={"cancel"} /> : null}
+      {display ? <Button func={changeDisplay} text={"Save"} /> : null}
 
       {/* {display && (
         <Button changeDisplay={() => addEducation(test)} text={"save"} />

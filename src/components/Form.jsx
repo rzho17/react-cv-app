@@ -10,6 +10,7 @@ export default function Form({
   educationData,
   handleEducation,
   addEducation,
+  updateEducation,
 }) {
   return (
     <div className="form--container">
@@ -23,6 +24,7 @@ export default function Form({
         educationData={educationData}
         handleEducation={handleEducation}
         addEducation={addEducation}
+        updateEducation={updateEducation}
       />
 
       {/* <Button text={"asdfasd"} /> */}
