@@ -11,6 +11,7 @@ export default function Form({
   handleEducation,
   addEducation,
   updateEducation,
+  cancelChanges,
 }) {
   return (
     <div className="form--container">
@@ -25,6 +26,7 @@ export default function Form({
         handleEducation={handleEducation}
         addEducation={addEducation}
         updateEducation={updateEducation}
+        cancelChanges={cancelChanges}
       />
 
       {/* <Button text={"asdfasd"} /> */}

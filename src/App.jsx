@@ -108,6 +108,16 @@ function App() {
     });
   }
 
+  function cancelChanges() {
+    setEducationData((prevData) => {
+      const lastIndex = prevData.length - 1;
+
+      const newData = [...prevData].splice(0, lastIndex);
+
+      return newData;
+    });
+  }
+
   function addEducation() {
     const test = {
       date: "",
@@ -126,36 +136,28 @@ function App() {
   //opens up a form
   //form entered will change the selected education
 
-  function updateEducation(id) {
-    console.log(id);
-
+  function updateEducation(evt, data) {
     //my thought is i need the state to change so i re render the education form
-    const filtered = educationData.filter((data) => data.id === id);
-    console.log(educationData.filter((data) => data.id === id));
-    //return doesn't do anything just trying to figure out how to make it appear
+    // const filtered = educationData.filter((item) => item.id === data.id);
+    // console.log(educationData.filter((data) => data.id === id));
+    // console.log(filtered);
 
-    console.log("clicked!");
+    console.log("he is the data!");
+    console.log(data);
+    console.log("typed!");
 
-    return filtered;
+    const { name, value } = evt.target;
 
-    // changeDisplay();
-
-    // return (
-    //   <div>
-    //     {/* {display && (
-    //       <EducationForm
-    //         educationData={filtered[0]}
-    //         handleEducation={handleEducation}
-    //         // addEducation={addEducation}
-    //       />
-    //     )} */}
-    //     {/* <EducationForm
-    //       educationData={filtered[0]}
-    //       handleEducation={handleEducation}
-    //       // addEducation={addEducation}
-    //     /> */}
-    //   </div>
-    // );
+    setEducationData((prevData) => {
+      return prevData.map((item) => {
+        // console.log(value);
+        if (item.id === data[0].id) {
+          console.log("same");
+          return { ...item, [name]: value };
+        }
+        return item;
+      });
+    });
   }
 
   return (
@@ -167,6 +169,7 @@ function App() {
         handleEducation={handleEducation}
         addEducation={addEducation}
         updateEducation={updateEducation}
+        cancelChanges={cancelChanges}
       />
       <Cv
         personalFormData={personalFormData}
