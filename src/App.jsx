@@ -118,6 +118,37 @@ function App() {
     });
   }
 
+  const [oldEducation, setOldEducation] = useState([]);
+  function cancelEdit(data) {
+    // setOldEducation(educationData);
+    // console.log(educationData);
+    console.log(oldEducation);
+    setEducationData(oldEducation);
+    // setEducationData()
+    // setEducationData(educationData);
+    // console.log(data);
+    // setEducationData((prevData) => {
+    //   const lastIndex = prevData.length - 1;
+    //   const newData = [...prevData];
+    //   const currentData = data[0];
+    //   const currentId = data[0].id;
+    //   console.log(prevData);
+    //   // console.log("the current data");
+    //   // console.log(currentData);
+    //   // console.log(prevData[0].id);
+    //   if (prevData[0].id === currentId) {
+    //     console.log("the current data");
+    //     console.log(currentData);
+    //     return [newData, currentData];
+    //   }
+    //   //find the current index that is being edited
+    //   //save the current index in a value
+    //   //when the cancel button is pressed put the current value into the current index
+    //   //return the array which should be unedited
+    //   return newData;
+    // });
+  }
+
   function addEducation() {
     const test = {
       date: "",
@@ -149,9 +180,23 @@ function App() {
     const { name, value } = evt.target;
 
     setEducationData((prevData) => {
+      // setOldEducation(prevData);
+
+      // setOldEducation((oldData) => {
+      //   return oldData.map((oldItem) => {
+      //     if (oldItem.id === data[0].id) {
+      //       console.log("i have been updated");
+      //       return data[0];
+      //     }
+      //     return oldItem;
+      //   });
+      // });
+
       return prevData.map((item) => {
         // console.log(value);
         if (item.id === data[0].id) {
+          console.log(data[0]);
+          console.log(prevData);
           console.log("same");
           return { ...item, [name]: value };
         }
@@ -170,6 +215,8 @@ function App() {
         addEducation={addEducation}
         updateEducation={updateEducation}
         cancelChanges={cancelChanges}
+        cancelEdit={cancelEdit}
+        setOldEducation={setOldEducation}
       />
       <Cv
         personalFormData={personalFormData}

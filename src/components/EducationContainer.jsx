@@ -11,6 +11,8 @@ export default function EducationContainer({
   addEducation,
   updateEducation,
   cancelChanges,
+  cancelEdit,
+  setOldEducation,
 }) {
   const [display, setDisplay] = useState(false);
 
@@ -45,6 +47,8 @@ export default function EducationContainer({
       <DisplayExperience
         data={educationData}
         updateEducation={updateEducation}
+        cancelEdit={cancelEdit}
+        setOldEducation={setOldEducation}
       />
       {/* displays form if button is clicked */}
       {display && (

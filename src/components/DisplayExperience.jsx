@@ -6,6 +6,8 @@ import Button from "./Button";
 export default function DisplayExperience({
   data,
   updateEducation,
+  cancelEdit,
+  setOldEducation,
   newData,
   updateObj,
 }) {
@@ -36,8 +38,14 @@ export default function DisplayExperience({
     // changeFormItem();
     setDisplay(true);
     setCurrentData([obj]);
+    setOldEducation(data);
+    // cancelEdit(data);
   }
 
+  function handleCancel(obj) {
+    cancelEdit(obj);
+    setDisplay(!display);
+  }
   return (
     <>
       {data.map((obj) => (
@@ -61,7 +69,9 @@ export default function DisplayExperience({
         />
       )}
       {/* cancel button should take the anychanges made and erase them with the preivous data */}
-      {display ? <Button func={saveChange} text={"Cancel"} /> : null}
+      {display ? (
+        <Button func={() => handleCancel(data)} text={"Cancel"} />
+      ) : null}
 
       {/* save button will simply change the display value from true to false */}
       {display ? <Button func={saveChange} text={"Save"} /> : null}
