@@ -24,10 +24,16 @@ export default function Cv({
 
       <Header personalFormData={personalFormData} />
 
+      {educationData.length >= 1 ? <h3>Education</h3> : null}
+
       {educationData.map((data) => {
-        return (
-          <Experience key={nanoid()} cvTitle={data.type} educationData={data} />
-        );
+        return <Experience key={nanoid()} educationData={data} />;
+      })}
+
+      {experienceData.length >= 1 ? <h3>Experience</h3> : null}
+      {experienceData.map((data) => {
+        console.log(data);
+        return <Experience key={nanoid()} educationData={data} />;
       })}
 
       {/* <Experience cvTitle={"Education"} educationData={educationData} /> */}

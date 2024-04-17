@@ -1,0 +1,42 @@
+.form--personal {
+  /* display: flex; */
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+
+  border: 1px solid red;
+}
+
+.form--personal h2 {
+  text-align: left;
+  font-size: 2rem;
+  text-wrap: nowrap;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.form--personal div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+.form--personal label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.form--personal input {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.form--personal input:focus {
+  outline: 1px solid rgb(107, 215, 255);
+}

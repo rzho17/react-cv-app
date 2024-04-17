@@ -8,8 +8,8 @@ export default function DisplayExperience({
   updateEducation,
   cancelEdit,
   setOldEducation,
-  newData,
-  updateObj,
+  deleteItem,
+  setCondition,
 }) {
   const [display, setDisplay] = useState(false);
 
@@ -43,7 +43,12 @@ export default function DisplayExperience({
   }
 
   function handleCancel(obj) {
-    cancelEdit(obj);
+    cancelEdit(setCondition);
+    setDisplay(!display);
+  }
+
+  function handleDelete(obj) {
+    deleteItem(obj, setCondition);
     setDisplay(!display);
   }
   return (
@@ -64,10 +69,18 @@ export default function DisplayExperience({
       {display && (
         <EducationForm
           educationData={currentData}
-          handleEducation={(evt) => updateEducation(evt, currentData)}
+          handleEducation={(evt) =>
+            updateEducation(evt, currentData, setCondition)
+          }
+          setCondition={setCondition}
           // addEducation={addEducation}
         />
       )}
+
+      {display ? (
+        <Button func={() => handleDelete(currentData)} text={"Delete"} />
+      ) : null}
+
       {/* cancel button should take the anychanges made and erase them with the preivous data */}
       {display ? (
         <Button func={() => handleCancel(data)} text={"Cancel"} />

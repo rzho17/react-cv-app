@@ -9,9 +9,24 @@
 
 main {
   display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.form--container {
+  flex-grow: 1;
 }
 
 .educationContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.education--header {
+  display: flex;
+}
+
+.education--experience {
   display: flex;
   flex-direction: column;
 }

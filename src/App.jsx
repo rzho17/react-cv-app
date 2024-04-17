@@ -55,34 +55,35 @@ function App() {
   // ]);
 
   const [educationData, setEducationData] = useState([]);
+  const [experienceData, setExperienceData] = useState([]);
+  // useEffect(() => {
+  //   setEducationData((prevData) => {
+  //     if (prevData.length === 0) {
+  //       return [
+  //         {
+  //           type: "Education",
+  //           date: "",
+  //           location: "",
+  //           place: "",
+  //           title: "",
+  //           id: nanoid(),
+  //           info: "",
+  //         },
+  //       ];
+  //     }
+  //     return prevData;
+  //   });
+  // }),
+  //   [];
 
-  useEffect(() => {
-    setEducationData((prevData) => {
-      if (prevData.length === 0) {
-        return [
-          {
-            type: "Education",
-            date: "",
-            location: "",
-            place: "",
-            title: "",
-            id: nanoid(),
-            info: "",
-          },
-        ];
-      }
-      return prevData;
-    });
-  }),
-    [];
-  const [experienceData, setExperienceData] = useState({
-    type: "",
-    date: "",
-    location: "",
-    place: "",
-    title: "",
-    info: "",
-  });
+  // const [experienceData, setExperienceData] = useState({
+  //   type: "",
+  //   date: "",
+  //   location: "",
+  //   place: "",
+  //   title: "",
+  //   info: "",
+  // });
 
   function handleChange(evt) {
     setPersonalFormData((prevData) => {
@@ -93,8 +94,10 @@ function App() {
     });
   }
 
-  function handleEducation(evt) {
-    setEducationData((prevData) => {
+  function handleEducation(evt, condition) {
+    const setFunc = condition ? setEducationData : setExperienceData;
+    console.log(experienceData);
+    setFunc((prevData) => {
       const lastIndex = prevData.length - 1;
 
       const newData = [...prevData];
@@ -108,8 +111,9 @@ function App() {
     });
   }
 
-  function cancelChanges() {
-    setEducationData((prevData) => {
+  function cancelChanges(cancelCondition) {
+    const setFunc = cancelCondition ? setEducationData : setExperienceData;
+    setFunc((prevData) => {
       const lastIndex = prevData.length - 1;
 
       const newData = [...prevData].splice(0, lastIndex);
@@ -119,28 +123,20 @@ function App() {
   }
 
   const [oldEducation, setOldEducation] = useState([]);
-  function cancelEdit(data) {
-    // setOldEducation(educationData);
-    // console.log(educationData);
+  const [oldExperience, setOldExperience] = useState([]);
+
+  function cancelEdit(condition) {
     console.log(oldEducation);
-    setEducationData(oldEducation);
-    // setEducationData()
-    // setEducationData(educationData);
-    // console.log(data);
-    // setEducationData((prevData) => {
-    //   const lastIndex = prevData.length - 1;
-    //   const newData = [...prevData];
-    //   const currentData = data[0];
-    //   const currentId = data[0].id;
-    //   console.log(prevData);
-    //   // console.log("the current data");
-    //   // console.log(currentData);
-    //   // console.log(prevData[0].id);
-    //   if (prevData[0].id === currentId) {
-    //     console.log("the current data");
-    //     console.log(currentData);
-    //     return [newData, currentData];
-    //   }
+
+    // setEducationData(oldEducation);
+    // setFunc(data);
+
+    if (condition) {
+      setEducationData(oldEducation);
+    } else {
+      setExperienceData(oldExperience);
+    }
+
     //   //find the current index that is being edited
     //   //save the current index in a value
     //   //when the cancel button is pressed put the current value into the current index
@@ -149,7 +145,16 @@ function App() {
     // });
   }
 
-  function addEducation() {
+  function deleteItem(obj, condition) {
+    console.log(obj);
+    const setFunc = condition ? setEducationData : setExperienceData;
+    setFunc((prevData) => {
+      return prevData.filter((item) => item.id !== obj[0].id);
+    });
+  }
+
+  function addEducation(condition) {
+    const setFunc = condition ? setEducationData : setExperienceData;
     const test = {
       date: "",
       location: "",
@@ -158,20 +163,18 @@ function App() {
       id: nanoid(),
       info: "",
     };
-    setEducationData((prevData) => {
+    setFunc((prevData) => {
       return [...prevData, test];
     });
   }
 
-  //opens the selected education
-  //opens up a form
-  //form entered will change the selected education
-
-  function updateEducation(evt, data) {
+  function updateEducation(evt, data, condition) {
     //my thought is i need the state to change so i re render the education form
     // const filtered = educationData.filter((item) => item.id === data.id);
     // console.log(educationData.filter((data) => data.id === id));
     // console.log(filtered);
+
+    const setFunc = condition ? setEducationData : setExperienceData;
 
     console.log("he is the data!");
     console.log(data);
@@ -179,19 +182,7 @@ function App() {
 
     const { name, value } = evt.target;
 
-    setEducationData((prevData) => {
-      // setOldEducation(prevData);
-
-      // setOldEducation((oldData) => {
-      //   return oldData.map((oldItem) => {
-      //     if (oldItem.id === data[0].id) {
-      //       console.log("i have been updated");
-      //       return data[0];
-      //     }
-      //     return oldItem;
-      //   });
-      // });
-
+    setFunc((prevData) => {
       return prevData.map((item) => {
         // console.log(value);
         if (item.id === data[0].id) {
@@ -217,6 +208,9 @@ function App() {
         cancelChanges={cancelChanges}
         cancelEdit={cancelEdit}
         setOldEducation={setOldEducation}
+        deleteItem={deleteItem}
+        experienceData={experienceData}
+        setOldExperience={setOldExperience}
       />
       <Cv
         personalFormData={personalFormData}

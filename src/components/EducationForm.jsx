@@ -1,4 +1,8 @@
-export default function EducationForm({ educationData, handleEducation }) {
+export default function EducationForm({
+  educationData,
+  handleEducation,
+  condition,
+}) {
   // date: "",
   // location: "",
   // place: "",
@@ -7,16 +11,37 @@ export default function EducationForm({ educationData, handleEducation }) {
 
   console.log("here is the modified education data");
   console.log(educationData);
+  console.log(condition);
   return (
     <form action="" className="form--experience">
       <div className="form--start--date">
-        <label htmlFor="start--date">Date</label>
+        <label htmlFor="start--date">Start/End Date</label>
         <input
           id="start--date"
           type="text"
           name="date"
-          onChange={handleEducation}
+          onChange={(evt) => handleEducation(evt, condition)}
           value={educationData.date}
+        />
+      </div>
+      <div className="form--school">
+        <label htmlFor="school">{condition ? "School" : "Company Name"}</label>
+        <input
+          id="school"
+          type="text"
+          name="place"
+          onChange={(evt) => handleEducation(evt, condition)}
+          value={educationData.place}
+        />
+      </div>
+      <div className="form--degree">
+        <label htmlFor="degree">{condition ? "Degree" : "Job Title"}</label>
+        <input
+          id="degree"
+          type="text"
+          name="title"
+          onChange={(evt) => handleEducation(evt, condition)}
+          value={educationData.title}
         />
       </div>
       <div className="form--location">
@@ -25,30 +50,21 @@ export default function EducationForm({ educationData, handleEducation }) {
           id="location"
           type="text"
           name="location"
-          onChange={handleEducation}
+          onChange={(evt) => handleEducation(evt, condition)}
           value={educationData.location}
         />
       </div>
-      <div className="form--school">
-        <label htmlFor="school">School</label>
-        <input
-          id="school"
-          type="text"
-          name="place"
-          onChange={handleEducation}
-          value={educationData.place}
-        />
-      </div>
-      <div className="form--degree">
-        <label htmlFor="degree">Degree</label>
-        <input
-          id="degree"
-          type="text"
-          name="title"
-          onChange={handleEducation}
-          value={educationData.title}
-        />
-      </div>
+      {!condition && (
+        <div className="form--info">
+          <label htmlFor="info">Job Description 'optional'</label>
+          <textarea
+            id="info"
+            name="info"
+            onChange={(evt) => handleEducation(evt, condition)}
+            value={educationData.info}
+          />
+        </div>
+      )}
     </form>
   );
 }

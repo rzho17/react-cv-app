@@ -13,8 +13,11 @@ export default function EducationContainer({
   cancelChanges,
   cancelEdit,
   setOldEducation,
+  deleteItem,
+  setCondition,
 }) {
   const [display, setDisplay] = useState(false);
+  const [experienceDisplay, setExperienceDisplay] = useState(false);
 
   //changes display to hide or show education form
   function changeDisplay() {
@@ -24,9 +27,16 @@ export default function EducationContainer({
       return !prev;
     });
   }
+  function changeExperienceDisplay() {
+    // console.log(display);
+    setExperienceDisplay((prev) => {
+      //   console.log(educationData);
+      return !prev;
+    });
+  }
 
   function addNewEducation() {
-    addEducation();
+    addEducation(setCondition);
     changeDisplay();
   }
 
@@ -34,35 +44,54 @@ export default function EducationContainer({
     console.log("here is the data before cancel");
     console.log(educationData);
     changeDisplay();
-    cancelChanges();
+    cancelChanges(setCondition);
     console.log("after cancel");
     console.log(educationData);
   }
 
   return (
     <div className="educationContainer">
-      <h2>Education</h2>
+      <div className="education--header">
+        <h2>{setCondition ? "Education" : "Experience"}</h2>
 
-      {!display && <Button func={changeDisplay} text={"Display Form"} />}
-      <DisplayExperience
-        data={educationData}
-        updateEducation={updateEducation}
-        cancelEdit={cancelEdit}
-        setOldEducation={setOldEducation}
-      />
-      {/* displays form if button is clicked */}
-      {display && (
-        <EducationForm
-          educationData={educationData}
-          handleEducation={handleEducation}
-          addEducation={addEducation}
-        />
+        {<Button func={changeExperienceDisplay} text={"Display Form"} />}
+      </div>
+
+      {/* displays section  */}
+      {experienceDisplay && (
+        <div className="education--experience">
+          {/* displays list of experience only on the add section */}
+          {!display && (
+            <DisplayExperience
+              data={educationData}
+              updateEducation={updateEducation}
+              cancelEdit={cancelEdit}
+              setOldEducation={setOldEducation}
+              deleteItem={deleteItem}
+              setCondition={setCondition}
+            />
+          )}
+          {/* displays form if button is clicked */}
+          {display && (
+            <EducationForm
+              educationData={educationData}
+              handleEducation={handleEducation}
+              addEducation={addEducation}
+              condition={setCondition}
+            />
+          )}
+
+          {!display && (
+            <Button
+              func={addNewEducation}
+              text={setCondition ? "Add Education" : "Add Experience"}
+            />
+          )}
+
+          {display ? <Button func={cancel} text={"Cancel"} /> : null}
+          {display ? <Button func={changeDisplay} text={"Save"} /> : null}
+        </div>
       )}
-
-      {!display && <Button func={addNewEducation} text={"Add Education"} />}
-
-      {display ? <Button func={cancel} text={"Cancel"} /> : null}
-      {display ? <Button func={changeDisplay} text={"Save"} /> : null}
     </div>
   );
 }

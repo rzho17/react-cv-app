@@ -13,3 +13,7 @@
 .cv--education--container p {
   margin-bottom: -1rem;
 }
+
+.cv--job-description {
+  margin-top: 2rem;
+}

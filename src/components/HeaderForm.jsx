@@ -1,9 +1,12 @@
+import "../styles/HeaderForm.css";
+
 export default function HeaderForm({ formData, handleChange }) {
   return (
     //takes form info for the header section
     <form action="" className="form--personal">
+      <h2 className="form--header">Personal Details</h2>
       <div className="form--name">
-        <label htmlFor="fullName">Your Full Name</label>
+        <label htmlFor="fullName">Full Name</label>
         <input
           id="fullName"
           type="text"
