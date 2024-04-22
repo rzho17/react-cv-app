@@ -77,17 +77,19 @@ export default function DisplayExperience({
         />
       )}
 
-      {display ? (
-        <Button func={() => handleDelete(currentData)} text={"Delete"} />
-      ) : null}
+      <div className="editButtonContainer">
+        {display ? (
+          <Button func={() => handleDelete(currentData)} text={"Delete"} />
+        ) : null}
 
-      {/* cancel button should take the anychanges made and erase them with the preivous data */}
-      {display ? (
-        <Button func={() => handleCancel(data)} text={"Cancel"} />
-      ) : null}
+        {/* cancel button should take the anychanges made and erase them with the preivous data */}
+        {display ? (
+          <Button func={() => handleCancel(data)} text={"Cancel"} />
+        ) : null}
 
-      {/* save button will simply change the display value from true to false */}
-      {display ? <Button func={saveChange} text={"Save"} /> : null}
+        {/* save button will simply change the display value from true to false */}
+        {display ? <Button func={saveChange} text={"Save"} /> : null}
+      </div>
     </>
   );
 }

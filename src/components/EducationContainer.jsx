@@ -4,6 +4,7 @@ import EducationForm from "./EducationForm";
 import DisplayExperience from "./DisplayExperience";
 
 import "../styles/EducationContainer.css";
+import "../styles/HeaderForm.css";
 
 export default function EducationContainer({
   educationData,
@@ -54,7 +55,15 @@ export default function EducationContainer({
       <div className="education--header">
         <h2>{setCondition ? "Education" : "Experience"}</h2>
 
-        {<Button func={changeExperienceDisplay} text={"Display Form"} />}
+        {/* {<Button func={changeExperienceDisplay} text={"Display Form"} />} */}
+        {
+          <Button
+            func={changeExperienceDisplay}
+            // text={experienceDisplay ? "hi" : "bye"}
+            img={experienceDisplay ? "circle-up.svg" : "circle-down.svg"}
+            name={"toggle"}
+          />
+        }
       </div>
 
       {/* displays section  */}
@@ -81,15 +90,17 @@ export default function EducationContainer({
             />
           )}
 
-          {!display && (
-            <Button
-              func={addNewEducation}
-              text={setCondition ? "Add Education" : "Add Experience"}
-            />
-          )}
+          <div className="buttonContainer">
+            {!display && (
+              <Button
+                func={addNewEducation}
+                text={setCondition ? "Add Education" : "Add Experience"}
+              />
+            )}
 
-          {display ? <Button func={cancel} text={"Cancel"} /> : null}
-          {display ? <Button func={changeDisplay} text={"Save"} /> : null}
+            {display ? <Button func={cancel} text={"Cancel"} /> : null}
+            {display ? <Button func={changeDisplay} text={"Save"} /> : null}
+          </div>
         </div>
       )}
     </div>

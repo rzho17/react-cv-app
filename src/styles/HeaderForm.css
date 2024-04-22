@@ -18,19 +18,23 @@
   margin-bottom: 0.5rem;
 }
 
-.form--personal div {
+.form--personal div,
+.education--experience div {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   text-align: left;
   margin-bottom: 0.5rem;
 }
-.form--personal label {
+.form--personal label,
+.education--experience label {
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-.form--personal input {
+.form--personal input,
+.education--experience input,
+.education--experience textarea {
   font-size: 1rem;
   padding: 10px;
   border-radius: 10px;
