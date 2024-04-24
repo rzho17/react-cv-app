@@ -3,6 +3,8 @@ import { useState } from "react";
 import EducationForm from "./EducationForm";
 import Button from "./Button";
 
+// import "../styles/EducationContainer.css";
+
 export default function DisplayExperience({
   data,
   updateEducation,
@@ -10,6 +12,7 @@ export default function DisplayExperience({
   setOldEducation,
   deleteItem,
   setCondition,
+  setDisplayBtn,
 }) {
   const [display, setDisplay] = useState(false);
 
@@ -24,6 +27,7 @@ export default function DisplayExperience({
 
   function saveChange() {
     setDisplay(!display);
+    setDisplayBtn();
   }
 
   //trying to figure out how to send the data of the obj clicked into the form so it can open with it
@@ -39,17 +43,20 @@ export default function DisplayExperience({
     setDisplay(true);
     setCurrentData([obj]);
     setOldEducation(data);
+    setDisplayBtn();
     // cancelEdit(data);
   }
 
   function handleCancel(obj) {
     cancelEdit(setCondition);
     setDisplay(!display);
+    setDisplayBtn();
   }
 
   function handleDelete(obj) {
     deleteItem(obj, setCondition);
     setDisplay(!display);
+    setDisplayBtn();
   }
   return (
     <>
@@ -77,19 +84,33 @@ export default function DisplayExperience({
         />
       )}
 
-      <div className="editButtonContainer">
-        {display ? (
-          <Button func={() => handleDelete(currentData)} text={"Delete"} />
-        ) : null}
+      {/* displays the buttons only when the item is clicked to be edited */}
+      {display && (
+        <div className="editButtonContainer">
+          {display ? (
+            <Button
+              func={() => handleDelete(currentData)}
+              text={"Delete"}
+              name={"delete"}
+            />
+          ) : null}
 
-        {/* cancel button should take the anychanges made and erase them with the preivous data */}
-        {display ? (
-          <Button func={() => handleCancel(data)} text={"Cancel"} />
-        ) : null}
-
-        {/* save button will simply change the display value from true to false */}
-        {display ? <Button func={saveChange} text={"Save"} /> : null}
-      </div>
+          {/* cancel button should take the anychanges made and erase them with the preivous data */}
+          <div className="mainButtons">
+            {display ? (
+              <Button
+                func={() => handleCancel(data)}
+                text={"Cancel"}
+                name={"cancel"}
+              />
+            ) : null}
+            {/* save button will simply change the display value from true to false */}
+            {display ? (
+              <Button func={saveChange} text={"Save"} name={"save"} />
+            ) : null}
+          </div>
+        </div>
+      )}
     </>
   );
 }

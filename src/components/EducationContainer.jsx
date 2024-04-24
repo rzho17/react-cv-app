@@ -18,6 +18,7 @@ export default function EducationContainer({
   setCondition,
 }) {
   const [display, setDisplay] = useState(false);
+  const [displayBtn, setDisplayBtn] = useState(true);
   const [experienceDisplay, setExperienceDisplay] = useState(false);
 
   //changes display to hide or show education form
@@ -32,6 +33,12 @@ export default function EducationContainer({
     // console.log(display);
     setExperienceDisplay((prev) => {
       //   console.log(educationData);
+      return !prev;
+    });
+  }
+
+  function changeDisplayBtn() {
+    setDisplayBtn((prev) => {
       return !prev;
     });
   }
@@ -78,6 +85,7 @@ export default function EducationContainer({
               setOldEducation={setOldEducation}
               deleteItem={deleteItem}
               setCondition={setCondition}
+              setDisplayBtn={changeDisplayBtn}
             />
           )}
           {/* displays form if button is clicked */}
@@ -90,17 +98,22 @@ export default function EducationContainer({
             />
           )}
 
-          <div className="buttonContainer">
-            {!display && (
-              <Button
-                func={addNewEducation}
-                text={setCondition ? "Add Education" : "Add Experience"}
-              />
-            )}
+          {displayBtn && (
+            <div className="buttonContainer">
+              {!display && (
+                <Button
+                  func={addNewEducation}
+                  text={setCondition ? "+ Education" : "+ Experience"}
+                  name={"add"}
+                />
+              )}
 
-            {display ? <Button func={cancel} text={"Cancel"} /> : null}
-            {display ? <Button func={changeDisplay} text={"Save"} /> : null}
-          </div>
+              {display ? (
+                <Button func={cancel} text={"Cancel"} name={"cancel"} />
+              ) : null}
+              {display ? <Button func={changeDisplay} text={"Save"} /> : null}
+            </div>
+          )}
         </div>
       )}
     </div>
