@@ -60,15 +60,19 @@ export default function DisplayExperience({
   }
   return (
     <>
-      {data.map((obj) => (
-        <button
-          key={obj.id}
-          className="education--display--place"
-          onClick={() => handleChange(obj)}
-        >
-          {obj.id}
-        </button>
-      ))}
+      {display === false && (
+        <div className="displayContainer">
+          {data.map((obj) => (
+            <button
+              key={obj.id}
+              className="education--display--place"
+              onClick={() => handleChange(obj)}
+            >
+              {obj.place}
+            </button>
+          ))}
+        </div>
+      )}
       {/* {console.log(currentData)} */}
       {/* {console.log("hi")} */}
       {/* i just need to figure out how to send the specific obj with the correct id */}

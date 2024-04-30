@@ -15,6 +15,16 @@ export default function HeaderForm({ formData, handleChange }) {
           value={formData.fullName}
         />
       </div>
+      <div className="form--title">
+        <label htmlFor="jobTitle">Title</label>
+        <input
+          id="jobTitle"
+          type="text"
+          name="jobTitle"
+          onChange={handleChange}
+          value={formData.jobTitle}
+        />
+      </div>
       <div className="form--address--street">
         <label htmlFor="streetName">Street Address</label>
         <input

@@ -10,3 +10,15 @@
 
   padding: 5rem;
 }
+
+.cv--header--container {
+  margin-bottom: 1.5rem;
+}
+.cv--company {
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.4rem;
+  /* color: red; */
+}

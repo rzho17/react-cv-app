@@ -31,6 +31,7 @@ import EducationForm from "./components/EducationForm";
 function App() {
   const [personalFormData, setPersonalFormData] = useState({
     fullName: "",
+    jobTitle: "",
     streetName: "",
     cityName: "",
     phone: "",
@@ -154,6 +155,7 @@ function App() {
   }
 
   function addEducation(condition) {
+    console.log(`hre is the condition ${condition}`);
     const setFunc = condition ? setEducationData : setExperienceData;
     const test = {
       date: "",
@@ -179,6 +181,7 @@ function App() {
     console.log("he is the data!");
     console.log(data);
     console.log("typed!");
+    console.log(condition);
 
     const { name, value } = evt.target;
 
@@ -196,6 +199,16 @@ function App() {
     });
   }
 
+  const educationCondition = true;
+  const experienceCondition = false;
+
+  const [color, setColor] = useState({
+    color: "#000000",
+  });
+  function updateColor(item) {
+    setColor({ color: item.target.value });
+  }
+
   return (
     <main>
       <Form
@@ -211,11 +224,20 @@ function App() {
         deleteItem={deleteItem}
         experienceData={experienceData}
         setOldExperience={setOldExperience}
+        educationCondition={educationCondition}
+        experienceCondition={experienceCondition}
+      />
+      <h1 style={{ color: color.color }}>aldsfkjas</h1>
+      <input
+        type="color"
+        onChange={(evt) => updateColor(evt)}
+        value={color.color}
       />
       <Cv
         personalFormData={personalFormData}
         educationData={educationData}
         experienceData={experienceData}
+        color={color}
       />
     </main>
   );

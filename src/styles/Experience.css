@@ -4,16 +4,35 @@
 
 .cv--education--container {
   display: grid;
-  grid-template-columns: 10rem 1fr;
+  grid-template-columns: 7.5rem 1fr;
+  /* grid-template-columns: 1fr 1fr; */
   gap: 2rem;
 
   text-align: left;
+  margin-bottom: 1rem;
+  /* align-items: flex-start; */
 }
 
 .cv--education--container p {
-  margin-bottom: -1rem;
+  margin-bottom: -0.8rem;
+}
+
+.experienceH3 {
+  margin-top: 3rem;
 }
 
 .cv--job-description {
   margin-top: 2rem;
+}
+
+.cv--job-description {
+  width: 400px;
+  word-wrap: break-word;
+  border: 1px solid red;
+  margin-top: 1.2rem;
+}
+
+.cv--year,
+.cv--location {
+  word-wrap: break-word;
 }

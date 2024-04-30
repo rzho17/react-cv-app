@@ -94,7 +94,7 @@ export default function EducationContainer({
               educationData={educationData}
               handleEducation={handleEducation}
               addEducation={addEducation}
-              condition={setCondition}
+              setCondition={setCondition}
             />
           )}
 
@@ -111,7 +111,9 @@ export default function EducationContainer({
               {display ? (
                 <Button func={cancel} text={"Cancel"} name={"cancel"} />
               ) : null}
-              {display ? <Button func={changeDisplay} text={"Save"} /> : null}
+              {display ? (
+                <Button func={changeDisplay} text={"Save"} name={"save"} />
+              ) : null}
             </div>
           )}
         </div>

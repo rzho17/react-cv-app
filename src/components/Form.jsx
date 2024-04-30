@@ -17,6 +17,8 @@ export default function Form({
   deleteItem,
   experienceData,
   setOldExperience,
+  educationCondition,
+  experienceCondition,
 }) {
   return (
     <div className="form--container">
@@ -35,7 +37,7 @@ export default function Form({
         cancelEdit={cancelEdit}
         setOldEducation={setOldEducation}
         deleteItem={deleteItem}
-        setCondition={true}
+        setCondition={educationCondition}
       />
 
       <EducationContainer
@@ -47,7 +49,7 @@ export default function Form({
         cancelEdit={cancelEdit}
         setOldEducation={setOldExperience}
         deleteItem={deleteItem}
-        setCondition={false}
+        setCondition={experienceCondition}
       />
 
       {/* <Button text={"asdfasd"} /> */}

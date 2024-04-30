@@ -7,7 +7,7 @@ export default function Header({ personalFormData }) {
     //displays header info in the CV
     <div className="cv--header--container">
       <h1 className="cv--name">{personalFormData.fullName}</h1>
-      <h2 className="cv--title">{personalFormData.lastName}</h2>
+      <h2 className="cv--title">{personalFormData.jobTitle}</h2>
       <p>{personalFormData.streetName}</p>
       <p>{personalFormData.cityName}</p>
       <p>{personalFormData.phone}</p>
