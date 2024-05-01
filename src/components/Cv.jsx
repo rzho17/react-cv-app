@@ -24,7 +24,7 @@ export default function Cv({
         <p>(123) 456-7890</p>
         <p>no_reply@example.com</p>
       </div> */}
-      <Header personalFormData={personalFormData} />
+      <Header personalFormData={personalFormData} color={color} />
       {educationData.length >= 1 ? (
         <h3 style={{ color: color.color }}>Education</h3>
       ) : null}

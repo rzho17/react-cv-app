@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: flex-start;
 
-  height: 28cm;
+  /* height: 28cm; */
   width: 21cm;
   color: black;
-  background-color: aliceblue;
+  background-color: white;
 
   padding: 5rem;
 }

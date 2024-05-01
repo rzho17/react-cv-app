@@ -209,30 +209,48 @@ function App() {
     setColor({ color: item.target.value });
   }
 
+  const cvForm = document.querySelector(".cv--main");
+
+  function printWindow() {
+    window.print(cvForm);
+  }
+
   return (
     <main>
-      <Form
-        formData={personalFormData}
-        handleChange={handleChange}
-        educationData={educationData}
-        handleEducation={handleEducation}
-        addEducation={addEducation}
-        updateEducation={updateEducation}
-        cancelChanges={cancelChanges}
-        cancelEdit={cancelEdit}
-        setOldEducation={setOldEducation}
-        deleteItem={deleteItem}
-        experienceData={experienceData}
-        setOldExperience={setOldExperience}
-        educationCondition={educationCondition}
-        experienceCondition={experienceCondition}
-      />
-      <h1 style={{ color: color.color }}>aldsfkjas</h1>
-      <input
-        type="color"
-        onChange={(evt) => updateColor(evt)}
-        value={color.color}
-      />
+      <div className="sidebar">
+        <input
+          className="printButton"
+          type="button"
+          name=""
+          id=""
+          value={"print me"}
+          onClick={printWindow}
+        />
+        <input
+          style={{ background: color.color, border: color.color }}
+          className="colorPicker"
+          type="color"
+          onChange={(evt) => updateColor(evt)}
+          value={color.color}
+        />
+        <Form
+          formData={personalFormData}
+          handleChange={handleChange}
+          educationData={educationData}
+          handleEducation={handleEducation}
+          addEducation={addEducation}
+          updateEducation={updateEducation}
+          cancelChanges={cancelChanges}
+          cancelEdit={cancelEdit}
+          setOldEducation={setOldEducation}
+          deleteItem={deleteItem}
+          experienceData={experienceData}
+          setOldExperience={setOldExperience}
+          educationCondition={educationCondition}
+          experienceCondition={experienceCondition}
+        />
+      </div>
+
       <Cv
         personalFormData={personalFormData}
         educationData={educationData}
