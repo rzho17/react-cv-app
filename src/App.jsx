@@ -96,8 +96,19 @@ function App() {
   }
 
   function handleEducation(evt, condition) {
-    const setFunc = condition ? setEducationData : setExperienceData;
+    // const setFunc = condition ? setEducationData : setExperienceData;
     console.log(experienceData);
+
+    let setFunc;
+
+    if (condition === true) {
+      setFunc = setEducationData;
+    } else if (condition === false) {
+      setFunc = setExperienceData;
+    } else {
+      setFunc = setSkills;
+    }
+
     setFunc((prevData) => {
       const lastIndex = prevData.length - 1;
 
@@ -146,9 +157,15 @@ function App() {
     // });
   }
 
-  function deleteItem(obj, condition) {
+  function deleteItem(obj, condition, deleteSkill) {
     console.log(obj);
     const setFunc = condition ? setEducationData : setExperienceData;
+
+    if (deleteSkill === "delete") {
+      setSkills((prevData) => {
+        return prevData.filter((item) => item.id !== obj[0].id);
+      });
+    }
     setFunc((prevData) => {
       return prevData.filter((item) => item.id !== obj[0].id);
     });
@@ -156,7 +173,17 @@ function App() {
 
   function addEducation(condition) {
     console.log(`hre is the condition ${condition}`);
-    const setFunc = condition ? setEducationData : setExperienceData;
+    // const setFunc = condition ? setEducationData : setExperienceData;
+    let setFunc;
+
+    if (condition === true) {
+      setFunc = setEducationData;
+    } else if (condition === false) {
+      setFunc = setExperienceData;
+    } else {
+      setFunc = setSkills;
+    }
+
     const test = {
       date: "",
       location: "",
@@ -164,6 +191,7 @@ function App() {
       title: "",
       id: nanoid(),
       info: "",
+      skill: "",
     };
     setFunc((prevData) => {
       return [...prevData, test];
@@ -215,24 +243,28 @@ function App() {
     window.print(cvForm);
   }
 
+  const [skillData, setSkills] = useState([]);
+
   return (
     <main>
       <div className="sidebar">
-        <input
-          className="printButton"
-          type="button"
-          name=""
-          id=""
-          value={"print me"}
-          onClick={printWindow}
-        />
-        <input
-          style={{ background: color.color, border: color.color }}
-          className="colorPicker"
-          type="color"
-          onChange={(evt) => updateColor(evt)}
-          value={color.color}
-        />
+        <div className="sideButtons">
+          <input
+            className="printButton"
+            type="button"
+            name=""
+            id=""
+            value={"Save PDF"}
+            onClick={printWindow}
+          />
+          <input
+            style={{ background: color.color, border: color.color }}
+            className="colorPicker"
+            type="color"
+            onChange={(evt) => updateColor(evt)}
+            value={color.color}
+          />
+        </div>
         <Form
           formData={personalFormData}
           handleChange={handleChange}
@@ -248,6 +280,7 @@ function App() {
           setOldExperience={setOldExperience}
           educationCondition={educationCondition}
           experienceCondition={experienceCondition}
+          skillData={skillData}
         />
       </div>
 

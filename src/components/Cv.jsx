@@ -41,6 +41,18 @@ export default function Cv({
         // console.log(data);
         return <Experience key={nanoid()} educationData={data} />;
       })}
+
+      <h3>Skills</h3>
+      <div className="cv--skills">
+        <div className="skill">Cool</div>
+        <div className="skill">asdf</div>
+        <div className="skill">asdfqwer</div>
+        <div className="skill">;lk;lk;l</div>
+        <div className="skill">Cool</div>
+        <div className="skill">asdf</div>
+        <div className="skill">asdfqwer</div>
+        <div className="skill">;lk;lk;l</div>
+      </div>
       {/* <Experience cvTitle={"Education"} educationData={educationData} /> */}
       {/* <Experience
         cvTitle={"Professional Experience"}
@@ -93,7 +105,6 @@ export default function Cv({
           </p>
         </div>
       </div> */}
-      <h3 className="cv--description--title">Skills</h3>
     </div>
   );
 }

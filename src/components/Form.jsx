@@ -3,6 +3,7 @@ import HeaderForm from "./HeaderForm";
 import EducationForm from "./EducationForm";
 import Button from "./Button";
 import EducationContainer from "./EducationContainer";
+import SkillContainer from "./SkillContainer";
 
 export default function Form({
   formData,
@@ -19,6 +20,7 @@ export default function Form({
   setOldExperience,
   educationCondition,
   experienceCondition,
+  skillData,
 }) {
   return (
     <div className="form--container">
@@ -50,6 +52,12 @@ export default function Form({
         setOldEducation={setOldExperience}
         deleteItem={deleteItem}
         setCondition={experienceCondition}
+      />
+
+      <SkillContainer
+        skillData={skillData}
+        addSkill={addEducation}
+        handleSkill={handleEducation}
       />
 
       {/* <Button text={"asdfasd"} /> */}
