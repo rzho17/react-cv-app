@@ -58,6 +58,8 @@ export default function Form({
         skillData={skillData}
         addSkill={addEducation}
         handleSkill={handleEducation}
+        cancelChanges={cancelChanges}
+        deleteItem={deleteItem}
       />
 
       {/* <Button text={"asdfasd"} /> */}

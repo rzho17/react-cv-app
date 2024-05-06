@@ -124,7 +124,18 @@ function App() {
   }
 
   function cancelChanges(cancelCondition) {
-    const setFunc = cancelCondition ? setEducationData : setExperienceData;
+    // const setFunc = cancelCondition ? setEducationData : setExperienceData;
+
+    let setFunc;
+
+    if (cancelCondition === true) {
+      setFunc = setEducationData;
+    } else if (cancelCondition === false) {
+      setFunc = setExperienceData;
+    } else {
+      setFunc = setSkills;
+    }
+
     setFunc((prevData) => {
       const lastIndex = prevData.length - 1;
 
@@ -157,15 +168,16 @@ function App() {
     // });
   }
 
-  function deleteItem(obj, condition, deleteSkill) {
+  function deleteItem(obj, condition) {
     console.log(obj);
     const setFunc = condition ? setEducationData : setExperienceData;
 
-    if (deleteSkill === "delete") {
+    if (condition === "delete") {
       setSkills((prevData) => {
-        return prevData.filter((item) => item.id !== obj[0].id);
+        return prevData.filter((item) => item.id !== obj.id);
       });
     }
+
     setFunc((prevData) => {
       return prevData.filter((item) => item.id !== obj[0].id);
     });
