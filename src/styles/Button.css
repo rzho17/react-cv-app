@@ -58,3 +58,18 @@ button {
   background-color: rgb(74, 181, 252);
   color: white;
 }
+
+/* Hovers */
+
+.add:hover,
+.toggle:hover,
+.save:hover,
+.cancel:hover,
+.education--display--place:hover,
+.trash:hover {
+  cursor: pointer;
+}
+
+.displaySkill:hover {
+  cursor: default;
+}

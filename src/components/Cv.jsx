@@ -2,12 +2,14 @@ import "../styles/Cv.css";
 import "../styles/App.css";
 import Header from "./Header";
 import Experience from "./Experience";
+import Skill from "./Skill";
 import { nanoid } from "nanoid";
 
 export default function Cv({
   personalFormData,
   educationData,
   experienceData,
+  skillData,
   color,
 }) {
   return (
@@ -32,6 +34,7 @@ export default function Cv({
       {educationData.map((data) => {
         return <Experience key={nanoid()} educationData={data} />;
       })}
+
       {experienceData.length >= 1 ? (
         <h3 style={{ color: color.color }} className="experienceH3">
           Experience
@@ -42,17 +45,20 @@ export default function Cv({
         return <Experience key={nanoid()} educationData={data} />;
       })}
 
-      <h3>Skills</h3>
-      <div className="cv--skills">
-        <div className="skill">Cool</div>
-        <div className="skill">asdf</div>
-        <div className="skill">asdfqwer</div>
-        <div className="skill">;lk;lk;l</div>
-        <div className="skill">Cool</div>
-        <div className="skill">asdf</div>
-        <div className="skill">asdfqwer</div>
-        <div className="skill">;lk;lk;l</div>
-      </div>
+      {skillData.length >= 1 ? (
+        <h3 style={{ color: color.color }} className="experienceH3">
+          Skills
+        </h3>
+      ) : null}
+
+      {skillData.length >= 1 ? (
+        <ul className="cv--skills">
+          {skillData.map((data) => {
+            // console.log(data);
+            return <Skill key={nanoid()} skillData={data} name={"skill"} />;
+          })}
+        </ul>
+      ) : null}
       {/* <Experience cvTitle={"Education"} educationData={educationData} /> */}
       {/* <Experience
         cvTitle={"Professional Experience"}

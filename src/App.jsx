@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Button from "./components/Button";
 import "./styles/App.css";
 
 //Things to do for this project:
@@ -257,10 +258,81 @@ function App() {
 
   const [skillData, setSkills] = useState([]);
 
+  function setDemo() {
+    setPersonalFormData({
+      fullName: "Bill Brown",
+      jobTitle: "Front End Developer",
+      streetName: "1234 Street Name",
+      cityName: "Vancouver",
+      phone: "555-555-5555",
+      email: "billbrown@resume.com",
+    });
+
+    setEducationData([
+      {
+        date: "2020-2024",
+        location: "Vancouver",
+        place: "Amazing University",
+        title: "Bachelor of Business",
+        id: nanoid(),
+        info: "",
+        skill: "",
+      },
+    ]);
+    setExperienceData([
+      {
+        date: "2024-Present",
+        location: "Vancouver",
+        place: "Generic Company Ltd.",
+        title: "Front End Developer",
+        id: nanoid(),
+        info: "   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel perspiciatis neque labore sequi. Dolores ad odit exercitationem hic voluptate saepe nam atque ex magnam. Aut, laboriosam? Dicta est quis ipsum?",
+        skill: "",
+      },
+      {
+        date: "2020-2024",
+        location: "Vancouver",
+        place: "Super Kitchen Inc.",
+        title: "Kitchen Manager",
+        id: nanoid(),
+        info: "   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel perspiciatis neque labore sequi. Dolores ad odit exercitationem hic voluptate saepe nam atque ex magnam. Aut, laboriosam? Dicta est quis ipsum?",
+        skill: "",
+      },
+    ]);
+
+    setSkills([
+      { skill: "Digital Design" },
+      { skill: "HTML" },
+      { skill: "CSS" },
+      { skill: "Javascript" },
+      { skill: "React" },
+      { skill: "Detail Oriented" },
+      { skill: "Critical Thinking" },
+      { skill: "Teamwork" },
+    ]);
+  }
+
+  function clearDemo() {
+    setPersonalFormData({
+      fullName: "",
+      jobTitle: "",
+      streetName: "",
+      cityName: "",
+      phone: "",
+      email: "",
+    });
+
+    setEducationData([]);
+    setExperienceData([]);
+    setSkills([]);
+  }
+
   return (
     <main>
       <div className="sidebar">
         <div className="sideButtons">
+          <Button func={setDemo} text={"Load Demo"} />
+          <Button func={clearDemo} text={"Clear"} />
           <input
             className="printButton"
             type="button"
@@ -300,6 +372,7 @@ function App() {
         personalFormData={personalFormData}
         educationData={educationData}
         experienceData={experienceData}
+        skillData={skillData}
         color={color}
       />
     </main>

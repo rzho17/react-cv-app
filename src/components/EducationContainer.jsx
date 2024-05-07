@@ -19,7 +19,7 @@ export default function EducationContainer({
 }) {
   const [display, setDisplay] = useState(false);
   const [displayBtn, setDisplayBtn] = useState(true);
-  const [experienceDisplay, setExperienceDisplay] = useState(false);
+  const [experienceDisplay, setExperienceDisplay] = useState(true);
 
   //changes display to hide or show education form
   function changeDisplay() {

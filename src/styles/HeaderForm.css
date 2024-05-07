@@ -27,14 +27,16 @@
   margin-bottom: 0.5rem;
 }
 .form--personal label,
-.education--experience label {
+.education--experience label,
+.skillHeader label {
   font-size: 1.1rem;
   font-weight: 600;
 }
 
 .form--personal input,
 .education--experience input,
-.education--experience textarea {
+.education--experience textarea,
+#skill {
   font-size: 1rem;
   padding: 10px;
   border-radius: 10px;
