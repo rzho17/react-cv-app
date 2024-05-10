@@ -3,16 +3,8 @@ export default function EducationForm({
   handleEducation,
   setCondition,
 }) {
-  // date: "",
-  // location: "",
-  // place: "",
-  // title: "",
-  // info: "",
-
-  console.log(`here is the modified education data  ${educationData[0]}`);
-  console.log(educationData[0]);
-  console.log(setCondition);
   return (
+    // basic form that takes in input from the user and sets the value to a state based on the values given
     <form action="" className="form--experience">
       <div className="form--start--date">
         <label htmlFor="start--date">Start/End Date</label>
@@ -64,7 +56,7 @@ export default function EducationForm({
       </div>
       {setCondition === false ? (
         <div className="form--info">
-          <label htmlFor="info">Job Description 'optional'</label>
+          <label htmlFor="info">Job Description (optional)</label>
           <textarea
             id="info"
             name="info"
@@ -75,9 +67,7 @@ export default function EducationForm({
             }
           />
         </div>
-      ) : (
-        console.log(`edu form condition: ${setCondition}`)
-      )}
+      ) : null}
     </form>
   );
 }

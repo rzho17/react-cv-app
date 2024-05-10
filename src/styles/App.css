@@ -1,6 +1,4 @@
 #root {
-  /* max-width: 1280px; */
-  /* margin: 0 auto; */
   padding: 1rem;
   text-align: center;
 
@@ -18,7 +16,6 @@ main {
 
 .sidebar {
   width: 350px;
-  /* max-width: 600px; */
 }
 
 .form--container {
@@ -41,7 +38,6 @@ input[type="color"] {
   height: 50px;
 
   box-shadow: 0px 7px 200px -47px rgba(0, 0, 0, 0.75);
-  /* background-color: transparent; */
 }
 
 .colorPicker::-webkit-color-swatch {
@@ -52,12 +48,11 @@ input[type="color"] {
 .printButton {
   font-size: 1.2rem;
   padding: 1rem;
-  /* border: none; */
+
   border-radius: 5px;
   color: white;
   background-color: DodgerBlue;
   border: 1px solid white;
-  /* background-color: transparent; */
 }
 
 .sideButtons {
@@ -74,3 +69,37 @@ input[type="color"] {
 }
 
 /* media */
+
+@media screen and (max-width: 768px) {
+  html {
+    margin: 0 !important;
+  }
+  #root {
+    padding: 0 !important;
+  }
+  main {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .sidebar {
+    align-self: center;
+    padding: 1rem;
+  }
+  .cv--main {
+    align-self: center !important;
+    padding: 1rem !important;
+    width: 100% !important;
+  }
+  .cv--education--container {
+    width: 100% !important;
+  }
+
+  .cv--job-description {
+    width: 100% !important;
+  }
+
+  .cv--skills {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}

@@ -11,11 +11,9 @@ export default function SkillContainer({
   cancelChanges,
   deleteItem,
 }) {
-  function test() {
-    console.log("i work in the skillsContainer!");
+  function add() {
     setShowDisplay(!showDisplay);
     addSkill();
-    console.log(skillData);
   }
   function onSubmit(evt) {
     evt.preventDefault();
@@ -27,19 +25,13 @@ export default function SkillContainer({
   }
   function save() {
     setShowDisplay(!showDisplay);
-    console.log(skillData);
   }
   const [showDisplay, setShowDisplay] = useState(false);
-
-  //add the data
-  //delete the data
 
   const [experienceDisplay, setExperienceDisplay] = useState(true);
 
   function changeExperienceDisplay() {
-    // console.log(display);
     setExperienceDisplay((prev) => {
-      //   console.log(educationData);
       return !prev;
     });
   }
@@ -47,16 +39,15 @@ export default function SkillContainer({
     <div className="skillContainer">
       <div className="skillHeader">
         {!showDisplay && <h2>Skills</h2>}
-        <form action="" onSubmit={onSubmit} className="skill--form">
-          {!showDisplay && (
-            <Button
-              func={changeExperienceDisplay}
-              // text={experienceDisplay ? "hi" : "bye"}
-              img={experienceDisplay ? "circle-up.svg" : "circle-down.svg"}
-              name={"toggle"}
-            />
-          )}
-          {showDisplay && (
+        {!showDisplay && (
+          <Button
+            func={changeExperienceDisplay}
+            img={experienceDisplay ? "circle-up.svg" : "circle-down.svg"}
+            name={"toggle"}
+          />
+        )}
+        {showDisplay && (
+          <form action="" onSubmit={onSubmit} className="skill--form">
             <div>
               <label htmlFor="skill">Add Skill</label>
               <input
@@ -65,12 +56,10 @@ export default function SkillContainer({
                 name="skill"
                 onChange={(evt) => handleSkill(evt, "skill")}
                 value={skillData.skill}
-                //   onChange={(evt) => handleEducation(evt, setCondition)}
-                //   value={educationData.date}
               />
             </div>
-          )}
-        </form>
+          </form>
+        )}
       </div>
 
       {experienceDisplay && (
@@ -78,18 +67,13 @@ export default function SkillContainer({
           {!showDisplay && (
             <div className="displayContainer skillDisplayContainer">
               {skillData.map((obj) => (
-                <div
-                  key={obj.id}
-                  className="displaySkill"
-                  // onClick={() => handleChange(obj)}
-                >
+                <div key={obj.id} className="displaySkill">
                   {obj.skill}
                   <Button
                     key={obj.id}
                     func={() => deleteItem(obj, "delete")}
                     img={"trash.svg"}
                     name={"trash"}
-                    // text={"Delete"}
                   />
                 </div>
               ))}
@@ -97,7 +81,7 @@ export default function SkillContainer({
           )}
           <div className="buttonContainer">
             {showDisplay === false && (
-              <Button func={test} text={"+ Skill"} name={"add"} />
+              <Button func={add} text={"+ Skill"} name={"add"} />
             )}
 
             {showDisplay ? (

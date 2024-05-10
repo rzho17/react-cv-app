@@ -25,10 +25,6 @@ export default function Form({
   return (
     <div className="form--container">
       <HeaderForm formData={formData} handleChange={handleChange} />
-      {/* <EducationForm
-        educationData={educationData}
-        handleEducation={handleEducation}
-      /> */}
 
       <EducationContainer
         educationData={educationData}
@@ -61,8 +57,6 @@ export default function Form({
         cancelChanges={cancelChanges}
         deleteItem={deleteItem}
       />
-
-      {/* <Button text={"asdfasd"} /> */}
     </div>
   );
 }

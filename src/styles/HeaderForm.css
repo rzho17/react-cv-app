@@ -1,13 +1,8 @@
 .form--personal {
-  /* display: flex; */
-  flex-direction: column;
-
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-
-  /* border: 1px solid red; */
 }
 
 .form--personal h2 {
@@ -39,14 +34,23 @@
 #skill {
   font-size: 1rem;
   padding: 10px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   border: none;
+  border-bottom: 1px solid white;
+
+  /* background-color: rgb(44, 44, 44); */
+  background-color: transparent;
 }
 
 ::placeholder {
-  color: white;
+  color: #acabab;
 }
 
 .form--personal input:focus {
-  outline: 1px solid rgb(107, 215, 255);
+  /* outline: 1px solid rgb(107, 215, 255); */
+}
+
+input:focus {
+  outline: none;
+  border-left: 2px solid rgb(0, 225, 255);
 }

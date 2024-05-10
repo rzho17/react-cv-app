@@ -4,6 +4,7 @@
   align-items: flex-start;
 
   /* height: 27cm; */
+
   width: 21cm;
   color: black;
   background-color: white;
@@ -20,7 +21,6 @@
 
 h3 {
   font-size: 1.4rem;
-  /* color: red; */
 }
 
 .cv--skills {

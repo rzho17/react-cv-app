@@ -1,15 +1,7 @@
-/* button.button {
-  height: auto;
-  background-color: red;
-} */
-
 button {
-  /* background-color: red; */
-  /* padding: 0; */
   border: none;
   border-radius: 10px;
   transition: 0.3s ease-in;
-  /* background-color: white; */
 }
 .showBtn {
 }
@@ -23,7 +15,6 @@ button {
 .toggle img {
   display: flex;
   width: 1.2rem;
-  /* color: white; */
   background-color: transparent;
   padding: 1rem;
 
@@ -60,7 +51,7 @@ button {
 
 .save {
   background-color: rgb(74, 181, 252);
-  /* background-color: transparent; */
+
   color: white;
 }
 

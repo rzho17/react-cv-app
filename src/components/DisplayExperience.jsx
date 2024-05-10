@@ -16,15 +16,6 @@ export default function DisplayExperience({
 }) {
   const [display, setDisplay] = useState(false);
 
-  //changes display to hide or show education form
-  function changeFormItem() {
-    // console.log(display);
-    setDisplay((prev) => {
-      //   console.log(educationData);
-      return !prev;
-    });
-  }
-
   function saveChange() {
     setDisplay(!display);
     setDisplayBtn();
@@ -33,21 +24,17 @@ export default function DisplayExperience({
   //trying to figure out how to send the data of the obj clicked into the form so it can open with it
   //after that need to figure out how to edit the obj with same matching ids
   //then set the original data with the updated obj
-  //   const testId = ["asdf", "asdf"];
   const [currentData, setCurrentData] = useState(null);
 
+  // changes display and sets data for any changes
   function handleChange(obj) {
-    // console.log(obj);
-    // updateEducation(obj.id);
-    // changeFormItem();
     setDisplay(true);
     setCurrentData([obj]);
     setOldEducation(data);
     setDisplayBtn();
-    // cancelEdit(data);
   }
 
-  function handleCancel(obj) {
+  function handleCancel() {
     cancelEdit(setCondition);
     setDisplay(!display);
     setDisplayBtn();
@@ -60,6 +47,7 @@ export default function DisplayExperience({
   }
   return (
     <>
+      {/* displays all the items in the data as a button to click on them /edit */}
       {display === false && (
         <div className="displayContainer">
           {data.map((obj) => (
@@ -73,11 +61,8 @@ export default function DisplayExperience({
           ))}
         </div>
       )}
-      {/* {console.log(currentData)} */}
-      {/* {console.log("hi")} */}
-      {/* i just need to figure out how to send the specific obj with the correct id */}
-      {/* {console.log(currentData)} */}
 
+      {/* displays form to change the current item details */}
       {display && (
         <EducationForm
           educationData={currentData}

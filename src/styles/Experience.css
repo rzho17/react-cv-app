@@ -5,12 +5,11 @@
 .cv--education--container {
   display: grid;
   grid-template-columns: 7.5rem 1fr;
-  /* grid-template-columns: 1fr 1fr; */
+
   gap: 2rem;
 
   text-align: left;
   margin-bottom: 1rem;
-  /* align-items: flex-start; */
 }
 
 .cv--education--container p {

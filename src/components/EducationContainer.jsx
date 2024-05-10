@@ -23,16 +23,12 @@ export default function EducationContainer({
 
   //changes display to hide or show education form
   function changeDisplay() {
-    // console.log(display);
     setDisplay((prev) => {
-      //   console.log(educationData);
       return !prev;
     });
   }
   function changeExperienceDisplay() {
-    // console.log(display);
     setExperienceDisplay((prev) => {
-      //   console.log(educationData);
       return !prev;
     });
   }
@@ -49,12 +45,8 @@ export default function EducationContainer({
   }
 
   function cancel() {
-    console.log("here is the data before cancel");
-    console.log(educationData);
     changeDisplay();
     cancelChanges(setCondition);
-    console.log("after cancel");
-    console.log(educationData);
   }
 
   return (
@@ -62,7 +54,6 @@ export default function EducationContainer({
       <div className="education--header">
         <h2>{setCondition ? "Education" : "Experience"}</h2>
 
-        {/* {<Button func={changeExperienceDisplay} text={"Display Form"} />} */}
         {
           <Button
             func={changeExperienceDisplay}
@@ -98,6 +89,7 @@ export default function EducationContainer({
             />
           )}
 
+          {/* displays which button set to show / save-cancel/ add */}
           {displayBtn && (
             <div className="buttonContainer">
               {!display && (
