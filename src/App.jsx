@@ -177,11 +177,11 @@ function App() {
       setSkills((prevData) => {
         return prevData.filter((item) => item.id !== obj.id);
       });
+    } else {
+      setFunc((prevData) => {
+        return prevData.filter((item) => item.id !== obj[0].id);
+      });
     }
-
-    setFunc((prevData) => {
-      return prevData.filter((item) => item.id !== obj[0].id);
-    });
   }
 
   function addEducation(condition) {
@@ -261,7 +261,7 @@ function App() {
   function setDemo() {
     setPersonalFormData({
       fullName: "Bill Brown",
-      jobTitle: "Front End Developer",
+      jobTitle: "Competitive Eater",
       streetName: "1234 Street Name",
       cityName: "Vancouver",
       phone: "555-555-5555",
@@ -284,7 +284,7 @@ function App() {
         date: "2024-Present",
         location: "Vancouver",
         place: "Generic Company Ltd.",
-        title: "Front End Developer",
+        title: "Account Manager",
         id: nanoid(),
         info: "   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel perspiciatis neque labore sequi. Dolores ad odit exercitationem hic voluptate saepe nam atque ex magnam. Aut, laboriosam? Dicta est quis ipsum?",
         skill: "",
@@ -301,14 +301,14 @@ function App() {
     ]);
 
     setSkills([
-      { skill: "Digital Design" },
-      { skill: "HTML" },
-      { skill: "CSS" },
-      { skill: "Javascript" },
-      { skill: "React" },
-      { skill: "Detail Oriented" },
-      { skill: "Critical Thinking" },
-      { skill: "Teamwork" },
+      { id: nanoid(), skill: "Digital Design" },
+      { id: nanoid(), skill: "HTML" },
+      { id: nanoid(), skill: "CSS" },
+      { id: nanoid(), skill: "Javascript" },
+      { id: nanoid(), skill: "React" },
+      { id: nanoid(), skill: "Detail Oriented" },
+      { id: nanoid(), skill: "Critical Thinking" },
+      { id: nanoid(), skill: "Teamwork" },
     ]);
   }
 
@@ -331,22 +331,11 @@ function App() {
     <main>
       <div className="sidebar">
         <div className="sideButtons">
-          <Button func={setDemo} text={"Load Demo"} />
-          <Button func={clearDemo} text={"Clear"} />
-          <input
-            className="printButton"
-            type="button"
-            name=""
-            id=""
-            value={"Save PDF"}
-            onClick={printWindow}
-          />
-          <input
-            style={{ background: color.color, border: color.color }}
-            className="colorPicker"
-            type="color"
-            onChange={(evt) => updateColor(evt)}
-            value={color.color}
+          <Button func={setDemo} text={"Load Demo"} name={"loadButton"} />
+          <Button
+            func={clearDemo}
+            text={"Clear"}
+            name={"loadButton clearButton"}
           />
         </div>
         <Form
@@ -366,6 +355,23 @@ function App() {
           experienceCondition={experienceCondition}
           skillData={skillData}
         />
+        <div className="sideButtons">
+          <input
+            className="printButton"
+            type="button"
+            name=""
+            id=""
+            value={"Save PDF"}
+            onClick={printWindow}
+          />
+          <input
+            style={{ background: color.color, border: color.color }}
+            className="colorPicker"
+            type="color"
+            onChange={(evt) => updateColor(evt)}
+            value={color.color}
+          />
+        </div>
       </div>
 
       <Cv

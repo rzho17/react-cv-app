@@ -7,7 +7,7 @@
   gap: 1rem;
   padding: 1rem;
 
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .form--personal h2 {
@@ -41,6 +41,10 @@
   padding: 10px;
   border-radius: 10px;
   border: none;
+}
+
+::placeholder {
+  color: white;
 }
 
 .form--personal input:focus {

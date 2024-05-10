@@ -16,14 +16,14 @@ main {
   gap: 2rem;
 }
 
+.sidebar {
+  width: 350px;
+  /* max-width: 600px; */
+}
+
 .form--container {
   flex-grow: 1;
 }
-
-/* .educationContainer {
-  display: flex;
-  flex-direction: column;
-} */
 
 .education--header {
   display: flex;
@@ -52,10 +52,12 @@ input[type="color"] {
 .printButton {
   font-size: 1.2rem;
   padding: 1rem;
-  border: none;
+  /* border: none; */
   border-radius: 5px;
   color: white;
   background-color: DodgerBlue;
+  border: 1px solid white;
+  /* background-color: transparent; */
 }
 
 .sideButtons {
@@ -70,3 +72,5 @@ input[type="color"] {
 .colorPicker:hover {
   cursor: pointer;
 }
+
+/* media */

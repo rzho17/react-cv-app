@@ -8,14 +8,16 @@ button {
   /* padding: 0; */
   border: none;
   border-radius: 10px;
+  transition: 0.3s ease-in;
   /* background-color: white; */
 }
 .showBtn {
 }
 
 .toggle {
-  background-color: none;
+  background-color: transparent;
   padding: 0;
+  border: 1px solid white;
 }
 
 .toggle img {
@@ -26,6 +28,8 @@ button {
   padding: 1rem;
 
   border-radius: 10px;
+  filter: invert(100%) sepia(0%) saturate(7485%) hue-rotate(69deg)
+    brightness(126%) contrast(99%);
 }
 
 .add {
@@ -56,9 +60,21 @@ button {
 
 .save {
   background-color: rgb(74, 181, 252);
+  /* background-color: transparent; */
   color: white;
 }
 
+.loadButton {
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.clearButton {
+  background-color: red;
+}
 /* Hovers */
 
 .add:hover,
@@ -66,8 +82,11 @@ button {
 .save:hover,
 .cancel:hover,
 .education--display--place:hover,
-.trash:hover {
+.trash:hover,
+.loadButton:hover,
+.delete:hover {
   cursor: pointer;
+  background-color: #989898;
 }
 
 .displaySkill:hover {

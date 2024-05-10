@@ -77,6 +77,7 @@ export default function DisplayExperience({
       {/* {console.log("hi")} */}
       {/* i just need to figure out how to send the specific obj with the correct id */}
       {/* {console.log(currentData)} */}
+
       {display && (
         <EducationForm
           educationData={currentData}

@@ -9,8 +9,8 @@ export default function EducationForm({
   // title: "",
   // info: "",
 
-  console.log("here is the modified education data");
-  console.log(educationData);
+  console.log(`here is the modified education data  ${educationData[0]}`);
+  console.log(educationData[0]);
   console.log(setCondition);
   return (
     <form action="" className="form--experience">
@@ -22,6 +22,7 @@ export default function EducationForm({
           name="date"
           onChange={(evt) => handleEducation(evt, setCondition)}
           value={educationData.date}
+          placeholder={educationData.length > 0 ? educationData[0].date : null}
         />
       </div>
       <div className="form--school">
@@ -34,6 +35,7 @@ export default function EducationForm({
           name="place"
           onChange={(evt) => handleEducation(evt, setCondition)}
           value={educationData.place}
+          placeholder={educationData.length > 0 ? educationData[0].place : null}
         />
       </div>
       <div className="form--degree">
@@ -44,6 +46,7 @@ export default function EducationForm({
           name="title"
           onChange={(evt) => handleEducation(evt, setCondition)}
           value={educationData.title}
+          placeholder={educationData.length > 0 ? educationData[0].title : null}
         />
       </div>
       <div className="form--location">
@@ -54,6 +57,9 @@ export default function EducationForm({
           name="location"
           onChange={(evt) => handleEducation(evt, setCondition)}
           value={educationData.location}
+          placeholder={
+            educationData.length > 0 ? educationData[0].location : null
+          }
         />
       </div>
       {setCondition === false ? (
@@ -64,6 +70,9 @@ export default function EducationForm({
             name="info"
             onChange={(evt) => handleEducation(evt, setCondition)}
             value={educationData.info}
+            placeholder={
+              educationData.length > 0 ? educationData[0].info : null
+            }
           />
         </div>
       ) : (

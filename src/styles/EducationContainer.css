@@ -1,5 +1,7 @@
 .educationContainer {
   border: 1px solid white;
+  border-radius: 10px;
+  margin: 1.5rem 0;
   padding: 1rem;
 }
 
@@ -50,11 +52,14 @@
   font-size: 1.1rem;
   padding: 0.8rem;
   text-align: left;
+  background-color: transparent;
+  border: 1px solid white;
 }
 
 @media print {
   @page {
-    size: A4 portrait;
+    size: A4;
+    /* size: letter; */
     margin: 0;
   }
 
@@ -66,11 +71,25 @@
   }
   body {
     -webkit-print-color-adjust: exact;
+    visibility: hidden;
+  }
+
+  .cv--main {
+    margin: 0;
+    visibility: visible;
+    position: absolute;
+    /* left: 0; */
+    top: 0;
+
+    bottom: 0;
+    /* right: 0; */
   }
 
   .form--container,
   .colorPicker,
-  .printButton {
+  .printButton,
+  .loadButton,
+  .clearButton {
     display: none;
   }
 }
