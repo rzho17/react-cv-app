@@ -39,53 +39,8 @@ function App() {
     email: "",
   });
 
-  //data will be an array of objects
-  //when the user clicks add an education
-  //it will add an empty object to the array
-  // the user can then input the info into that object in the array
-
-  // const [educationData, setEducationData] = useState([
-  //   // trying to see if i can change the data type so i only have education set when it's the first entry
-  //   {
-  //     type: educationData.length > 0 ? "" : "Education",
-  //     date: "",
-  //     location: "",
-  //     place: "",
-  //     title: "",
-  //     info: "",
-  //   },
-  // ]);
-
   const [educationData, setEducationData] = useState([]);
   const [experienceData, setExperienceData] = useState([]);
-  // useEffect(() => {
-  //   setEducationData((prevData) => {
-  //     if (prevData.length === 0) {
-  //       return [
-  //         {
-  //           type: "Education",
-  //           date: "",
-  //           location: "",
-  //           place: "",
-  //           title: "",
-  //           id: nanoid(),
-  //           info: "",
-  //         },
-  //       ];
-  //     }
-  //     return prevData;
-  //   });
-  // }),
-  //   [];
-
-  // const [experienceData, setExperienceData] = useState({
-  //   type: "",
-  //   date: "",
-  //   location: "",
-  //   place: "",
-  //   title: "",
-  //   info: "",
-  // });
 
   function handleChange(evt) {
     setPersonalFormData((prevData) => {
@@ -97,9 +52,6 @@ function App() {
   }
 
   function handleEducation(evt, condition) {
-    // const setFunc = condition ? setEducationData : setExperienceData;
-    console.log(experienceData);
-
     let setFunc;
 
     if (condition === true) {
@@ -125,8 +77,6 @@ function App() {
   }
 
   function cancelChanges(cancelCondition) {
-    // const setFunc = cancelCondition ? setEducationData : setExperienceData;
-
     let setFunc;
 
     if (cancelCondition === true) {
@@ -150,27 +100,14 @@ function App() {
   const [oldExperience, setOldExperience] = useState([]);
 
   function cancelEdit(condition) {
-    console.log(oldEducation);
-
-    // setEducationData(oldEducation);
-    // setFunc(data);
-
     if (condition) {
       setEducationData(oldEducation);
     } else {
       setExperienceData(oldExperience);
     }
-
-    //   //find the current index that is being edited
-    //   //save the current index in a value
-    //   //when the cancel button is pressed put the current value into the current index
-    //   //return the array which should be unedited
-    //   return newData;
-    // });
   }
 
   function deleteItem(obj, condition) {
-    console.log(obj);
     const setFunc = condition ? setEducationData : setExperienceData;
 
     if (condition === "delete") {
@@ -185,8 +122,6 @@ function App() {
   }
 
   function addEducation(condition) {
-    console.log(`hre is the condition ${condition}`);
-    // const setFunc = condition ? setEducationData : setExperienceData;
     let setFunc;
 
     if (condition === true) {
@@ -212,17 +147,7 @@ function App() {
   }
 
   function updateEducation(evt, data, condition) {
-    //my thought is i need the state to change so i re render the education form
-    // const filtered = educationData.filter((item) => item.id === data.id);
-    // console.log(educationData.filter((data) => data.id === id));
-    // console.log(filtered);
-
     const setFunc = condition ? setEducationData : setExperienceData;
-
-    console.log("he is the data!");
-    console.log(data);
-    console.log("typed!");
-    console.log(condition);
 
     const { name, value } = evt.target;
 
