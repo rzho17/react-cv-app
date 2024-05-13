@@ -82,7 +82,7 @@ export default function EducationContainer({
           {/* displays form if button is clicked */}
           {display && (
             <EducationForm
-              educationData={educationData}
+              educationData={educationData[educationData.length - 1]}
               handleEducation={handleEducation}
               addEducation={addEducation}
               setCondition={setCondition}
